@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "dune6.sso-auth.v1;ssoauthv1";
+
+service Auth {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message RegisterResponse {
+  int64 user_id = 1;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+  int32 app_id = 3; // id of the app to login to
+}
+
+message LoginResponse {
+  string token = 1; // auth token for logged in user
+}
+
+message IsAdminRequest {
+  int64 user_id = 1; // id of the app to login to
+}
+
+message IsAdminResponse {
+  bool is_admin = 1; // auth token for logged in user
+}
