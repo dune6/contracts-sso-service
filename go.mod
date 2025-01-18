@@ -1,4 +1,4 @@
-module contract
+module github.com/dune6/contracts-sso-service
 
 go 1.23
 
